@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackweek Incremental Game</title>
+    <style>
+        .progress-bar {
+            width: 0%;
+            background-color: #747474;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <script type="text/javascript" src="script.js"> </script>
+    <script>createProgressBar("Feature Progress");</script>
+    <button onclick="increaseProgress('Feature Progress', 'Product Progress')">Code feature </button>
+    <script>createProgressBar("Product Progress");</script>
+    <div id ="bug counter"> Bug count is: 0</div>
+</body>
+
+
