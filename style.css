@@ -2,12 +2,16 @@ html {
     font-family :'Lucida Console'
 }
 
+body {
+    margin: 4% 10% 0% 10%;
+}
+
 .bar-background {
     border-style: dashed;
     border-radius: 20px;
     background-color: #bbb;
     height: 30px;
-    width: 80%;
+    width: 100%;
     margin-bottom: 10px;
     border-width: 2px;
 }
