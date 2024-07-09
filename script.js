@@ -7,6 +7,10 @@
         container.id = barName + "Container";
         container.className = "progress-container";
 
+        var barBackground = document.createElement("div");
+        barBackground.id = barName + "BarBackground";
+        barBackground.className = "bar-background"
+
         var bar = document.createElement("div");
         bar.id = barName + "Bar";
         bar.className = "progress-bar";
@@ -20,7 +24,8 @@
         progressCounter.textContent = "0%"; // Initial value
 
         container.appendChild(title);
-        container.appendChild(bar);
+        container.appendChild(barBackground);
+        barBackground.appendChild(bar);
         bar.appendChild(progressCounter);
         document.body.appendChild(container);
     }

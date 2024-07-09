@@ -1,6 +1,26 @@
+html {
+    font-family :'Lucida Console'
+}
+
+.bar-background {
+    border-style: dashed;
+    border-radius: 20px;
+    background-color: #bbb;
+    height: 30px;
+    width: 80%;
+    margin-bottom: 10px;
+    border-width: 2px;
+}
+
 .progress-bar {
+    border-radius: 20px;
     width: 0%;
     background-color: #747474;
-    height: 30px;
+    height: 100%;
     margin-bottom: 10px;
+    align-content: center;
+}
+
+.progress-counter {
+    margin-left: 10px;
 }
