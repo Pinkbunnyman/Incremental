@@ -27,7 +27,7 @@
         container.appendChild(barBackground);
         barBackground.appendChild(bar);
         bar.appendChild(progressCounter);
-        document.body.appendChild(container);
+        document.getElementById("Projects").appendChild(container);
     }
 
     function increaseProgress(barName,incrementWhenFull, autoresettable) {
@@ -38,7 +38,7 @@
         if(Math.floor(Math.random() * 100) <= bugChance)
         {
             bugs++;
-            newWidth = currentWidth;
+            newWidth = currentWidth
         }
         else
         {
@@ -52,10 +52,12 @@
                 }
             }
         }
-
-       
         const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
 
         bar.style.width = newWidth + "%";
         progressCounter.textContent = newWidth + "%";
     }
+
+function changePage(page) {
+
+}
