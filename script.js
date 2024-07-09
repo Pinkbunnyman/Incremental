@@ -37,7 +37,7 @@
         var currentWidth = parseFloat(bar.style.width) || 0;
 
         var newWidth = Math.min(currentWidth + 5, 100); 
-        if(currentWidth==100)
+        if(newWidth==100)
         {
             newWidth = 0;
             currentWidth = 0;
