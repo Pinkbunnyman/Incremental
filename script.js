@@ -33,13 +33,14 @@
     function increaseProgress(barName,incrementWhenFull, autoresettable) {
         var bar = document.getElementById(barName + "Bar");
         var progressCounter = document.getElementById(barName + "Counter");
-        
         var currentWidth = parseFloat(bar.style.width) || 0;
-    if(Math.floor(Math.random() * 100) <= bugChance)
+
+        if(Math.floor(Math.random() * 100) <= bugChance)
         {
             bugs++;
+            newWidth = currentWidth;
         }
-    else
+        else
         {
             var newWidth = Math.min(currentWidth + 5, 100); 
             if(newWidth==100 && autoresettable == true)
