@@ -14,11 +14,11 @@
 
         var barBackground = document.createElement("div");
         barBackground.id = barName + "BarBackground";
-        barBackground.className = "bar-background"
+        barBackground.className = "progress"
 
         var bar = document.createElement("div");
         bar.id = barName + "Bar";
-        bar.className = "progress-bar";
+        bar.className = "progress-bar progress-bar-striped";
 
         var title = document.createElement("h2");
         title.textContent = barName;
