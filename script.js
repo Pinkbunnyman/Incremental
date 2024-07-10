@@ -82,10 +82,12 @@
     }
 
 function changePage(page) {
-    var pages = document.getElementsByClassName("page")
+    var pages = document.querySelectorAll(".page")
+    var newActivePage = document.getElementById(page)
     pages.forEach(element => {
-        element.className = "hidden"
+        element.classList.add("d-none")
     });
+    newActivePage.classList.remove("d-none")
 }
 
 function fillWithButtons(){
