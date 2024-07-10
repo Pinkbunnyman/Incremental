@@ -18,6 +18,8 @@
 
     <div class="container p-4 my-4 rounded-5 bg-primary">
         <h1>Not Mindtech - An Incremental Adventure</h1>
+        <span class="badge rounded-pill bg-success bi-cash"> 500</span>
+        <span class="badge rounded-pill bg-warning bi-people-fill"> 500</span>
     </div>
     <div class="container">
         <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
@@ -29,7 +31,7 @@
         </ul>
     </div>
 
-    <div id = "Projects" class = "page container">
+    <div id = "Projects" class = "page container p-4">
         <script>createProgressBar("Feature Progress");</script>
         <button type="button" onclick="increaseFeatureProgress(5)" class = "clickable btn btn-outline-primary">Code Feature</button>
         <script>createProgressBar("Product Progress");</script>
@@ -37,20 +39,20 @@
         <div id = "additionalFeature counter"> Additional features completed: 0</div>
     </div>
 
-    <div id = "Staff" class = "page container">
+    <div id = "Staff" class = "page container p-4">
         <button onclick="buyCoders()" class = "buyable btn btn-outline-primary">Buy Coders for £100</button>
         <button onclick="buyTester()" class = "buyable btn btn-outline-primary">Buy Testers for £too much</button>
     </div>
 
-    <div hidden id = "Upgrades" class = "page container">
+    <div hidden id = "Upgrades" class = "page container p-4">
         <script>fillWithButtons()</script>
     </div>
     
-    <div hidden id = "Achievements" class = "page">
+    <div hidden id = "Achievements" class = "page container p-4">
 
     </div>
 
-    <div hidden id = "Settings" class = "page container"> 
+    <div hidden id = "Settings" class = "page  container p-4"> 
         <script type="text/javascript" src="saving.js"> </script>
         <button onclick="saveGame()">Save Game</button>
         <button onclick="loadGame()">Load Game</button>
