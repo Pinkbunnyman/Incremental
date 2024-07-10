@@ -48,12 +48,11 @@
         }
         else
         {
-            var newWidth = Math.min(currentWidth + progressAmount, 100); 
+            var newWidth = currentWidth + progressAmount; 
             if(newWidth>=100)
             {
                 increaseProductProgress(Math.floor(newWidth/100));
-                newWidth = 0;
-                currentWidth = 0;
+                newWidth = newWidth % 100;
             }
         }
         bar.style.width = newWidth + "%";
@@ -70,10 +69,11 @@
         var currentWidth = parseFloat(bar.style.width) || 0;
 
 
-        var newWidth = Math.min(currentWidth + progressAmount, 100); 
+        var newWidth = currentWidth + progressAmount; 
         if(newWidth>=100)
         {
-            additionalFeatures++;
+            additionalFeatures = additionalFeatures + Math.floor(newWidth/100);
+            newWidth=100;
         }
         
         bar.style.width = newWidth + "%";
@@ -98,12 +98,16 @@ function buyCoders(){
 }
 
 function autoFeatureProgress(){
-    const intervalDuration = gameSpeed / (devs % 100);
+    const intervalDuration = gameSpeed / (devs % gameSpeed);
     clearInterval(intervalId); // Clear existing interval (if any).
     if(devs % 100 !== 0){
         intervalId = setInterval(() => increaseFeatureProgress(1), intervalDuration);
     }
-    setInterval(() => increaseProductProgress(Math.floor(devs/100)), gameSpeed)
+    else
+    {
+        setInterval(() => increaseProductProgress(Math.floor(devs/gameSpeed)), gameSpeed)
+    }
+    
   };
   
   function resetFeatureProgress(){
