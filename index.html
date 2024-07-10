@@ -15,15 +15,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"> </script>
 
-    <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm">
-        <li class="nav-item"><button onclick="changePage('Projects')" class = "nav-link active rounded-5" aria-selected="true">Projects</button></li>
-        <li class="nav-item"><button onclick="changePage('Staff')" class = "nav-link rounded-5" aria-selected="true">Staff</button></li>
-        <li class="nav-item"><button onclick="changePage('Upgrades')" class = "nav-link rounded-5" aria-selected="true">Upgrades</button></li>
-        <li class="nav-item"><button onclick="changePage('Achievements')" class = "nav-link rounded-5" aria-selected="true">Achievements</button></li>
-        <li class="nav-item"><button onclick="changePage('Settings')" class = "nav-link rounded-5" aria-selected="true">Settings</button></li>
-    </ul>
+    <div class="container">
+        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm">
+            <li class="nav-item"><button onclick="changePage('Projects')" class = "nav-link active rounded-5" aria-selected="true">Projects</button></li>
+            <li class="nav-item"><button onclick="changePage('Staff')" class = "nav-link rounded-5" aria-selected="true">Staff</button></li>
+            <li class="nav-item"><button onclick="changePage('Upgrades')" class = "nav-link rounded-5" aria-selected="true">Upgrades</button></li>
+            <li class="nav-item"><button onclick="changePage('Achievements')" class = "nav-link rounded-5" aria-selected="true">Achievements</button></li>
+            <li class="nav-item"><button onclick="changePage('Settings')" class = "nav-link rounded-5" aria-selected="true">Settings</button></li>
+        </ul>
+    </div>
 
-    <div id = "Projects" class = "page">
+    <div id = "Projects" class = "page container">
         <script>createProgressBar("Feature Progress");</script>
         <button type="button" onclick="increaseFeatureProgress(5)" class = "clickable btn btn-outline-primary">Code Feature</button>
         <script>createProgressBar("Product Progress");</script>
@@ -31,12 +33,12 @@
         <div id = "additionalFeature counter"> Additional features completed: 0</div>
     </div>
 
-    <div id = "Staff" class = "page">
+    <div id = "Staff" class = "page container">
         <button onclick="buyCoders()" class = "buyable btn btn-outline-primary">Buy Coders for £100</button>
         <button onclick="buyTester()" class = "buyable btn btn-outline-primary">Buy Testers for £too much</button>
     </div>
 
-    <div hidden id = "Upgrades" class = "page">
+    <div hidden id = "Upgrades" class = "page container">
         <script>fillWithButtons()</script>
     </div>
     
@@ -44,7 +46,7 @@
 
     </div>
 
-    <div hidden id = "Settings" class = "page"> 
+    <div hidden id = "Settings" class = "page container"> 
         <script type="text/javascript" src="saving.js"> </script>
         <button onclick="saveGame()">Save Game</button>
         <button onclick="loadGame()">Load Game</button>
