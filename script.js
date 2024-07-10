@@ -19,6 +19,7 @@
         var bar = document.createElement("div");
         bar.id = barName + "Bar";
         bar.className = "progress-bar progress-bar-striped";
+        bar.style.transition = "none"
 
         var title = document.createElement("h2");
         title.textContent = barName;
