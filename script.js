@@ -1,7 +1,11 @@
     var bugs = 0;
-    var bugChance = 50;
+    var bugChance = 0;
     var additionalFeatures = 0;
-
+    var devs = 0;
+    var cash = 0; //temporarily
+    var devUpdateTime = 0;
+    var intervalId;
+    var gameSpeed = 1000;
 
     function createProgressBar(barName) {
         var container = document.createElement("div");
@@ -31,25 +35,25 @@
         document.getElementById("Projects").appendChild(container);
     }
 
-    function increaseFeatureProgress() {
+    function increaseFeatureProgress(progressAmount) {
         var barName = "Feature Progress";
         var bar = document.getElementById(barName + "Bar");
         var progressCounter = document.getElementById(barName + "Counter");
         var currentWidth = parseFloat(bar.style.width) || 0;
 
-        if(Math.floor(Math.random() * 100) <= bugChance)
+        if(Math.floor(Math.random() * 100) < bugChance)
         {
             bugs++;
             newWidth = currentWidth
         }
         else
         {
-            var newWidth = Math.min(currentWidth + 5, 100); 
-            if(newWidth==100)
+            var newWidth = Math.min(currentWidth + progressAmount, 100); 
+            if(newWidth>=100)
             {
+                increaseProductProgress(Math.floor(newWidth/100));
                 newWidth = 0;
                 currentWidth = 0;
-                increaseProductProgress();
             }
         }
         bar.style.width = newWidth + "%";
@@ -58,7 +62,7 @@
 
     }
 
-    function increaseProductProgress() {
+    function increaseProductProgress(progressAmount) {
         
         var barName = "Product Progress";
         var bar = document.getElementById(barName + "Bar");
@@ -66,8 +70,8 @@
         var currentWidth = parseFloat(bar.style.width) || 0;
 
 
-        var newWidth = Math.min(currentWidth + 5, 100); 
-        if(newWidth==100)
+        var newWidth = Math.min(currentWidth + progressAmount, 100); 
+        if(newWidth>=100)
         {
             additionalFeatures++;
         }
@@ -84,3 +88,27 @@ function changePage(page) {
 function fillWithButtons(){
     
 }
+
+function buyCoders(){
+    devs += 1;
+    cash -= 100
+
+    resetFeatureProgress();
+    autoFeatureProgress();
+}
+
+function autoFeatureProgress(){
+    const intervalDuration = gameSpeed / (devs % 100);
+    clearInterval(intervalId); // Clear existing interval (if any).
+    if(devs % 100 !== 0){
+        intervalId = setInterval(() => increaseFeatureProgress(1), intervalDuration);
+    }
+    setInterval(() => increaseProductProgress(Math.floor(devs/100)), gameSpeed)
+  };
+  
+  function resetFeatureProgress(){
+    const bar = document.getElementById("Feature ProgressBar");
+    bar.style.width = "0%";
+    const progressCounter = document.getElementById("Feature ProgressCounter");
+    progressCounter.textContent = "0%";
+  }
