@@ -10,6 +10,7 @@
 
 <body>
     <script type="text/javascript" src="script.js"> </script>
+    
     <div id = "Page Banner" class = "page">
         <button onclick="changePage('Projects')" class = "tab">Projects</button>
         <button onclick="changePage('Staff')" class = "tab">Staff</button>
@@ -20,25 +21,30 @@
 
     <div id = "Projects" class = "page">
         <script>createProgressBar("Feature Progress");</script>
-        <button onclick="increaseProgress('Feature Progress', 'Product Progress', true)" class = "clickable">Code feature </button>
+        <button onclick="increaseFeatureProgress()" class = "clickable">Code feature </button>
         <script>createProgressBar("Product Progress");</script>
         <div id ="bug counter"> Bug count is: 0</div>
+        <div id = "additionalFeature counter"> Additional features completed: 0</div>
     </div>
 
-    <div id = "Staff" class = "page">
-
+    <div hidden id = "Staff" class = "page">
+        <button onclick="buyCoders()" class = "buyable">Buy Coders</button>
+        <button onclick="buyTester()" class = "buyable">Buy Testers</button>
     </div>
 
-    <div id = "Upgrades" class = "page">
-
+    <div hidden id = "Upgrades" class = "page">
+        <script>fillWithButtons()</script>
     </div>
     
-    <div id = "Achievements" class = "page">
+    <div hidden id = "Achievements" class = "page">
 
     </div>
 
-    <div id = "Settings" class = "page">
-        
+    <div hidden id = "Settings" class = "page"> 
+        <script type="text/javascript" src="script.js"> </script>
+        <button onclick="saveGame()">Save Game</button>
+        <button onclick="loadGame()">Load Game</button>
+        <button onclick="resetGame()">Reset Game</button>
     </div>
 </body>
 

@@ -1,5 +1,6 @@
     var bugs = 0;
     var bugChance = 50;
+    var additionalFeatures = 0;
 
 
     function createProgressBar(barName) {
@@ -30,7 +31,8 @@
         document.getElementById("Projects").appendChild(container);
     }
 
-    function increaseProgress(barName,incrementWhenFull, autoresettable) {
+    function increaseFeatureProgress() {
+        var barName = "Feature Progress";
         var bar = document.getElementById(barName + "Bar");
         var progressCounter = document.getElementById(barName + "Counter");
         var currentWidth = parseFloat(bar.style.width) || 0;
@@ -43,21 +45,42 @@
         else
         {
             var newWidth = Math.min(currentWidth + 5, 100); 
-            if(newWidth==100 && autoresettable == true)
+            if(newWidth==100)
             {
                 newWidth = 0;
                 currentWidth = 0;
-                if(incrementWhenFull!==undefined){
-                    increaseProgress(incrementWhenFull);
-                }
+                increaseProductProgress();
             }
         }
-        const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
-
         bar.style.width = newWidth + "%";
         progressCounter.textContent = newWidth + "%";
+        const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
+
+    }
+
+    function increaseProductProgress() {
+        
+        var barName = "Product Progress";
+        var bar = document.getElementById(barName + "Bar");
+        var progressCounter = document.getElementById(barName + "Counter");
+        var currentWidth = parseFloat(bar.style.width) || 0;
+
+
+        var newWidth = Math.min(currentWidth + 5, 100); 
+        if(newWidth==100)
+        {
+            additionalFeatures++;
+        }
+        
+        bar.style.width = newWidth + "%";
+        progressCounter.textContent = newWidth + "%";
+        const textElement = document.getElementById("additionalFeature counter"); textElement.textContent = `Additional features completed: ${additionalFeatures}`;
     }
 
 function changePage(page) {
 
+}
+
+function fillWithButtons(){
+    
 }
