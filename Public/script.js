@@ -236,9 +236,13 @@ function autoFeatureProgress(){
     if(paused == false){
         clearInterval(intervalId);
         clearInterval(projectIntervalId);
+        paused = true;
+        console.log("Development paused");
     }
     else if(paused == true){
         autoFeatureProgress();
+        console.log("Development resumed");
+        paused = false;
     }
 
   }
