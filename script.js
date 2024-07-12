@@ -6,6 +6,7 @@
     var devUpdateTime = 0;
     var intervalId;
     var projectIntervalId;
+    var bugIntervalId;
     var gameSpeed = 1000;
     var testers = 0;
     var managers = 0;
@@ -123,7 +124,8 @@ function buyTesters(){
         cash -= 500
         updateTesterCounter();
         updateCashCounter();
-    }
+        autoBugDecrease();
+        }
     else{
         alert("Not enough cash to buy a tester");
     }
@@ -148,7 +150,6 @@ function autoFeatureProgress(){
     {
         completions = Math.floor(devs/100);
         clearInterval(projectIntervalId)
-        console.log("increasing product progress by " + completions);
         projectIntervalId = setInterval(() => increaseProductProgress(1), gameSpeed/completions);   
     }
  
@@ -205,5 +206,12 @@ function autoFeatureProgress(){
     }
     else{
         alert("Cannot release product before completion");
+    }
+  }
+
+  function autoBugDecrease(){
+    clearInterval(bugIntervalId);
+    if(testers > 0){
+        bugIntervalId = setInterval(() => decreaseBugCount(), gameSpeed/testers);
     }
   }
