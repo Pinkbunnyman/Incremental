@@ -1,8 +1,9 @@
+    var startingCash = 2000
     var bugs = 0;
     var bugChance = 10;
     var additionalFeatures = 0;
     var devs = 0;
-    var cash = 2000; //temporarily
+    var cash = startingCash; //temporarily
     var devUpdateTime = 0;
     var intervalId;
     var projectIntervalId;
@@ -13,7 +14,10 @@
     var baseProjectCash = 200;
     var additionalFeatureMultiplier = 10;
     var bugPenalty = 10;
-
+    var managers = 0;
+    var currentProductWidth;
+    var newProductWidth;
+    
     function createProgressBar(barName) {
         var container = document.createElement("div");
         container.id = barName + "Container";
@@ -74,18 +78,18 @@
         var barName = "Product Progress";
         var bar = document.getElementById(barName + "Bar");
         var progressCounter = document.getElementById(barName + "Counter");
-        var currentWidth = parseFloat(bar.style.width) || 0;
+        currentProductWidth = parseFloat(bar.style.width) || 0;
 
 
-        var newWidth = currentWidth + progressAmount; 
-        if(newWidth>=100)
+        newProductWidth = currentProductWidth + progressAmount; 
+        if(newProductWidth>=100)
         {
-            additionalFeatures = additionalFeatures + Math.floor(newWidth/100);
-            newWidth=100;
+            additionalFeatures = additionalFeatures + Math.floor(newProductWidth/100);
+            newProductWidth=100;
         }
         
-        bar.style.width = newWidth + "%";
-        progressCounter.textContent = newWidth + "%";
+        bar.style.width = newProductWidth + "%";
+        progressCounter.textContent = newProductWidth + "%";
         updateAdditionalFeatureCounter();
     }
 
@@ -158,7 +162,7 @@ function autoFeatureProgress(){
   function decreaseBugCount(){
     bugs--;
     if(bugs < 0) bugs = 0;
-    const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
+    const textElement = document.getElementById("bug-counter"); textElement.textContent = `Bug count is: ${bugs}`;
   }
   
   function resetFeatureProgress(){
@@ -177,7 +181,7 @@ function autoFeatureProgress(){
   }
 
   function updateManagerCounter(){
-    const textElement = document.getElementById("manager-count"); textElement.textContent = `${mnanagers}`;
+    const textElement = document.getElementById("manager-count"); textElement.textContent = `${managers}`;
   }
 
   function updateCashCounter(){
@@ -185,7 +189,8 @@ function autoFeatureProgress(){
   }
 
   function updateBugCounter(){
-    const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
+    console.log("trying to update BugCounter" + document.getElementById("bug-counter"))
+    const textElement = document.getElementById("bug-counter"); textElement.textContent = `Bug count is: ${bugs}`;
   }
 
   function updateAdditionalFeatureCounter(){
