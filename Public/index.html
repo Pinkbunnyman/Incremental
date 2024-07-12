@@ -39,9 +39,6 @@
         <button type="button" onclick="increaseFeatureProgress(5)" class = "clickable btn btn-primary my-3">Code Feature</button>
         <script>createProgressBar("Product Progress");</script>
         <button type="button" onclick="releaseProduct();" class = "clickable btn btn-primary my-3">Release Product</button>
-        <button type="button" onclick="saveGame()" class = "clickable btn btn-primary my-3">Save game</button>
-        <button type="button" onclick="loadGame()" class = "clickable btn btn-primary my-3">Load game</button>
-        <button type="button" onclick="resetGame()" class = "clickable btn btn-primary my-3">Reset game</button>
         <div id ="bug-counter"> Bug count is: 0</div>
         <div id = "additionalFeature counter"> Additional features completed: 0</div>
     </div>
@@ -51,7 +48,7 @@
         <button onclick="buyTesters()" class = "buyable btn btn-primary">Buy Testers for £too much</button>
     </div>
 
-    <div hidden id = "Upgrades" class = "page container p-4 my-4 bg-secondary rounded-5">
+    <div id = "Upgrades" class = "page container p-4 my-4 bg-secondary rounded-5">
         <script>fillWithButtons()</script>
     </div>
     
@@ -68,13 +65,13 @@
         </div>
     </div>
 
-    <div hidden id = "Settings" class = "page  container p-4 my-4 bg-secondary rounded-5"> 
+    <div id = "Settings" class = "page  container p-4 my-4 bg-secondary rounded-5"> 
         <script type="text/javascript" src="saving.js"> </script>
-        <button onclick="saveGame()">Save Game</button>
-        <button onclick="loadGame()">Load Game</button>
-        <button onclick="resetGame()">Reset Game</button>
+        <button onclick="saveGame()" class="btn btn-primary my-3">Save Game</button>
+        <button onclick="loadGame()" class="btn btn-primary my-3">Load Game</button>
+        <button onclick="resetGame()" class="btn btn-primary my-3">Reset Game</button>
     </div>
-    <script>changePage('Achievements')</script>
+    <script>changePage('Projects')</script>
     <script>loadGame()</script>
     <script>setInterval(saveGame,1000)</script>
 </body>
