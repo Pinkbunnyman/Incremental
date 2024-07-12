@@ -30,7 +30,7 @@ function loadData() {
 
   bugs = gameData.bugs || 0;
   devs = gameData.devs || 0;
-  cash = gameData.cash || 0;
+  cash = gameData.cash || 2000;
   testers = gameData.testers || 0;
   managers = gameData.managers || 0;
   newProductWidth = gameData.newProductWidth || 0;
