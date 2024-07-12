@@ -17,7 +17,7 @@ function saveGame() {
     bugPenalty: bugPenalty,
     newProductWidth: newProductWidth
     };
-    
+
     saveData(gameState);
 }
 
@@ -28,23 +28,22 @@ function saveData(data) {
 function loadData() {
   var gameData = JSON.parse(localStorage.getItem('gameData'));
 
-  bugs = gameData.bugs;
+  bugs = gameData.bugs || 0;
+  devs = gameData.devs || 0;
+  cash = gameData.cash || 0;
+  testers = gameData.testers || 0;
+  managers = gameData.managers || 0;
+  newProductWidth = gameData.newProductWidth || 0;
   bugChance = gameData.bugChance;
   additionalFeatures = gameData.additionalFeatures;
-  devs = gameData.devs;
-  cash = gameData.cash;
   devUpdateTime = gameData.devUpdateTime;
   intervalId = gameData.intervalId;
   projectIntervalId = gameData.projectIntervalId;
   bugIntervalId = gameData.bugIntervalId;
   gameSpeed = gameData.gameSpeed;
-  testers = gameData.testers;
-  managers = gameData.managers;
   baseProjectCash = gameData.baseProjectCash;
   additionalFeatureMultiplier = gameData.additionalFeatureMultiplier;
   bugPenalty = gameData.bugPenalty;
-  newProductWidth = gameData.newProductWidth;
-
 
 
   updateDevCounter();
