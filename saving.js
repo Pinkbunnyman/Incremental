@@ -15,7 +15,8 @@ function saveGame() {
     baseProjectCash: baseProjectCash,
     additionalFeatureMultiplier: additionalFeatureMultiplier,
     bugPenalty: bugPenalty,
-    newProductWidth: newProductWidth
+    newProductWidth: newProductWidth,
+    paused: paused
     };
 
     saveData(gameState);
@@ -44,6 +45,7 @@ function loadData() {
   baseProjectCash = gameData.baseProjectCash;
   additionalFeatureMultiplier = gameData.additionalFeatureMultiplier;
   bugPenalty = gameData.bugPenalty;
+  paused = gameData.paused || false;
 
 
   updateDevCounter();

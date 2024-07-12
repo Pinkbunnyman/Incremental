@@ -17,6 +17,7 @@
     var managers = 0;
     var currentProductWidth;
     var newProductWidth;
+    var paused = false;
     
     function createProgressBar(barName) {
         var container = document.createElement("div");
@@ -189,7 +190,6 @@ function autoFeatureProgress(){
   }
 
   function updateBugCounter(){
-    console.log("trying to update BugCounter" + document.getElementById("bug-counter"))
     const textElement = document.getElementById("bug-counter"); textElement.textContent = `Bug count is: ${bugs}`;
   }
 
@@ -230,4 +230,15 @@ function autoFeatureProgress(){
   {
     document.getElementById("alert-box-text").innerText = message
     document.getElementById("alert-box").classList.remove("d-none")
+  }
+
+  function pauseDevelopment(){
+    if(paused == false){
+        clearInterval(intervalId);
+        clearInterval(projectIntervalId);
+    }
+    else if(paused == true){
+        autoFeatureProgress();
+    }
+
   }
