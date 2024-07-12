@@ -1,11 +1,17 @@
     var bugs = 0;
-    var bugChance = 0;
+    var bugChance = 10;
     var additionalFeatures = 0;
     var devs = 0;
-    var cash = 0; //temporarily
+    var cash = 2000; //temporarily
     var devUpdateTime = 0;
     var intervalId;
+    var projectIntervalId;
     var gameSpeed = 1000;
+    var testers = 0;
+    var managers = 0;
+    var baseProjectCash = 200;
+    var additionalFeatureMultiplier = 10;
+    var bugPenalty = 10;
 
     function createProgressBar(barName) {
         var container = document.createElement("div");
@@ -58,7 +64,7 @@
         }
         bar.style.width = newWidth + "%";
         progressCounter.textContent = newWidth + "%";
-        const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
+        updateBugCounter();
 
     }
 
@@ -79,7 +85,7 @@
         
         bar.style.width = newWidth + "%";
         progressCounter.textContent = newWidth + "%";
-        const textElement = document.getElementById("additionalFeature counter"); textElement.textContent = `Additional features completed: ${additionalFeatures}`;
+        updateAdditionalFeatureCounter();
     }
 
 function changePage(page) {
@@ -96,29 +102,108 @@ function fillWithButtons(){
 }
 
 function buyCoders(){
-    devs += 1;
-    cash -= 100
 
-    resetFeatureProgress();
-    autoFeatureProgress();
+    if(cash >= 100){
+        devs += 1;
+        cash -= 100
+
+        resetFeatureProgress();
+        autoFeatureProgress();
+        updateDevCounter();
+        updateCashCounter();
+    }
+    else{
+        alert("Not enough cash to buy a coder");
+    }
+}
+
+function buyTesters(){
+    if(cash >= 500){
+        testers += 1;
+        cash -= 500
+        updateTesterCounter();
+        updateCashCounter();
+    }
+    else{
+        alert("Not enough cash to buy a tester");
+    }
+}
+
+function buyManagers(){
+    managers += 1;
+    cash -= 10;
+    updateManagerCounter();
+    updateCashCounter();
 }
 
 function autoFeatureProgress(){
-    const intervalDuration = gameSpeed / (devs % gameSpeed);
+
     clearInterval(intervalId); // Clear existing interval (if any).
     if(devs % 100 !== 0){
+        intervalDuration = 1000 / (devs % 100);
         intervalId = setInterval(() => increaseFeatureProgress(1), intervalDuration);
     }
-    else
+
+    if(devs >= 100)
     {
-        setInterval(() => increaseProductProgress(Math.floor(devs/gameSpeed)), gameSpeed)
+        completions = Math.floor(devs/100);
+        clearInterval(projectIntervalId)
+        console.log("increasing product progress by " + completions);
+        projectIntervalId = setInterval(() => increaseProductProgress(1), gameSpeed/completions);   
     }
-    
+ 
   };
+
+  function decreaseBugCount(){
+    bugs--;
+    if(bugs < 0) bugs = 0;
+    const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
+  }
   
   function resetFeatureProgress(){
     const bar = document.getElementById("Feature ProgressBar");
     bar.style.width = "0%";
     const progressCounter = document.getElementById("Feature ProgressCounter");
     progressCounter.textContent = "0%";
+  }
+
+  function updateDevCounter(){
+    const textElement = document.getElementById("dev-count"); textElement.textContent = `${devs}`;
+  }
+
+  function updateTesterCounter(){
+    const textElement = document.getElementById("tester-count"); textElement.textContent = `${testers}`;
+  }
+
+  function updateManagerCounter(){
+    const textElement = document.getElementById("manager-count"); textElement.textContent = `${mnanagers}`;
+  }
+
+  function updateCashCounter(){
+    const textElement = document.getElementById("cash-count"); textElement.textContent = `£${cash}`;
+  }
+
+  function updateBugCounter(){
+    const textElement = document.getElementById("bug counter"); textElement.textContent = `Bug count is: ${bugs}`;
+  }
+
+  function updateAdditionalFeatureCounter(){
+    const textElement = document.getElementById("additionalFeature counter"); textElement.textContent = `Additional features completed: ${additionalFeatures}`;
+  }
+
+  function releaseProduct(){
+    var barName = "Product Progress";
+    var bar = document.getElementById(barName + "Bar");
+    var progressCounter = document.getElementById(barName + "Counter");
+
+    if(bar.style.width === "100%"){
+    cash = cash + baseProjectCash + additionalFeatures * additionalFeatureMultiplier - bugs * bugPenalty;
+    updateCashCounter();
+    additionalFeatures = 0;
+    bar.style.width = 0 + "%";
+    progressCounter.textContent = 0 + "%";
+    }
+    else{
+        alert("Cannot release product before completion");
+    }
   }
