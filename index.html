@@ -36,10 +36,14 @@
 
     <div id = "Projects" class = "page container p-4 my-4 bg-secondary rounded-5">
         <script>createProgressBar("Feature Progress");</script>
-        <button type="button" onclick="increaseFeatureProgress(50)" class = "clickable btn btn-primary my-3">Code Feature</button>
+        <button type="button" onclick="increaseFeatureProgress(100)" class = "clickable btn btn-primary my-3">Code Feature</button>
         <button type="button" onclick="decreaseBugCount();" class = "clickable btn btn-primary my-3">Remove a bug</button>
         <script>createProgressBar("Product Progress");</script>
         <button type="button" onclick="releaseProduct();" class = "clickable btn btn-primary my-3">Release Product</button>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="pause-devs" onclick="pauseDevelopment()">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Pause Feature Progress</label>
+          </div>
         <div id ="bug-counter"> Bug count is: 0</div>
         <div id = "additionalFeature counter"> Additional features completed: 0</div>
     </div>
@@ -59,7 +63,7 @@
             <span>Complete a Product with 1 less bug than a failure</span>
             <i>-10% chance of a bug being created</i>
         </div>
-        <div class="card my-3 p-3">
+        <div class="card my-3 p-3 text-muted">
             <span class="h3">It's A Bug Not A Feature</span>
             <span>Complete a Product with 1 less bug than a failure</span>
             <i>-10% chance of a bug being created</i>
