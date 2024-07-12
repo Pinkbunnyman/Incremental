@@ -220,3 +220,14 @@ function autoFeatureProgress(){
         bugIntervalId = setInterval(() => decreaseBugCount(), gameSpeed/testers);
     }
   }
+
+  function closeAlertBox()
+  {
+    document.getElementById("alert-box").classList.add("d-none")
+  }
+
+  function alert(message)
+  {
+    document.getElementById("alert-box-text").innerText = message
+    document.getElementById("alert-box").classList.remove("d-none")
+  }
