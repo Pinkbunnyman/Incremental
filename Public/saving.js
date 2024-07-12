@@ -17,9 +17,7 @@ function saveGame() {
     bugPenalty: bugPenalty,
     newProductWidth: newProductWidth
     };
-
-    console.log(gameState);
-
+    
     saveData(gameState);
 }
 
@@ -63,7 +61,7 @@ function loadData() {
   if(testers > 0) {
     autoBugDecrease();
   }
-  
+
   var barName = "Product Progress";
   var bar = document.getElementById(barName + "Bar");
   var progressCounter = document.getElementById(barName + "Counter");
