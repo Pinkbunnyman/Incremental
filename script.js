@@ -185,7 +185,7 @@ function autoFeatureProgress(){
   }
 
   function updateCashCounter(){
-    const textElement = document.getElementById("cash-count"); textElement.textContent = `£${cash}`;
+    const textElement = document.getElementById("cash-count"); textElement.textContent = `${cash}`;
   }
 
   function updateBugCounter(){

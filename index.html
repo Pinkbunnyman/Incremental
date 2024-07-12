@@ -20,7 +20,7 @@
     <div class="container p-4 my-4 rounded-5 bg-secondary d-flex flex-column align-items-center">
         <h1 class="align-self-center"><img src="./icons8-laptop-coding-pastel-glyph-96.png"> Not Mindtech - An Incremental Adventure</h1>
         <div class="m-2">
-            <span class="alert alert-success bi-cash py-1 px-3 rounded-pill border-2" id="cash-count"> 0</span>
+            <span class="alert alert-success bi-cash py-1 px-3 rounded-pill border-2"> <span id="cash-count">2000</span></span>
             <span class="alert alert-warning py-1 px-3 rounded-pill bi-people border-2"> Devs : <span id="dev-count">0</span> / Testers : <span id="tester-count">0</span> / Managers : <span id="manager-count">0</span></span>
         </div>
     </div>
@@ -36,7 +36,8 @@
 
     <div id = "Projects" class = "page container p-4 my-4 bg-secondary rounded-5">
         <script>createProgressBar("Feature Progress");</script>
-        <button type="button" onclick="increaseFeatureProgress(5)" class = "clickable btn btn-primary my-3">Code Feature</button>
+        <button type="button" onclick="increaseFeatureProgress(50)" class = "clickable btn btn-primary my-3">Code Feature</button>
+        <button type="button" onclick="decreaseBugCount();" class = "clickable btn btn-primary my-3">Remove a bug</button>
         <script>createProgressBar("Product Progress");</script>
         <button type="button" onclick="releaseProduct();" class = "clickable btn btn-primary my-3">Release Product</button>
         <div id ="bug-counter"> Bug count is: 0</div>
@@ -45,7 +46,7 @@
 
     <div id = "Staff" class = "page container p-4 my-4 bg-secondary rounded-5">
         <button onclick="buyCoders()" class = "buyable btn btn-primary">Buy Coders for £100</button>
-        <button onclick="buyTesters()" class = "buyable btn btn-primary">Buy Testers for £too much</button>
+        <button onclick="buyTesters()" class = "buyable btn btn-primary">Buy Testers for £500</button>
     </div>
 
     <div id = "Upgrades" class = "page container p-4 my-4 bg-secondary rounded-5">
